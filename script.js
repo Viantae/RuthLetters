@@ -1,63 +1,141 @@
-/* no_doc_ready */
+// Product Slider Script
+const initSlider = () => {
+  const imageList = document.querySelector(".product-slider-wrapper .product-image-list");
+  const sliderBtns = document.querySelectorAll(".product-slider-wrapper .product-slide-button");
+  const sliderScrollbar = document.querySelector(".product-slider-container .product-slider-scrollbar");
+  const sliderScrollbarThumb = sliderScrollbar.querySelector(".product-scrollbar-thumb");
+  const maxScrollWidth = imageList.scrollWidth - imageList.clientWidth
 
-const slide_contents = document.querySelector(".slide-contents");
-const arrowIcons = document.querySelectorAll(".slide-container a");
-const slideImg1 = slide_contents.querySelectorAll("img")[0];
+  // Handles scrollbar dragging
+  sliderScrollbarThumb.addEventListener("mousedown", (e) =>{
+    const startX = e.clientX // Returns horizontal mouse pointer coordinate
+    const thumbPos = sliderScrollbarThumb.offsetLeft;
 
-let isDrag = false, prevPageX, prevScrollLeft, positionDiff;
-let slideImg1_Width = slideImg1.clientWidth + 20 // Getting width and adding margin
+    // Update scrollbar thumb position based on mouse move
+    const mousemovement = (e) => {
+      const deltaX = e.clientX - startX;
+      const newThumbPos = thumbPos + deltaX;
+      const maxThumbPos = sliderScrollbar.getBoundingClientRect().width - sliderScrollbarThumb.offsetWidth;
 
+      const boundary = Math.max(0, Math.min(maxThumbPos, newThumbPos))
+      const scrollPosition = (boundary / maxThumbPos) * maxScrollWidth;
+      
+      sliderScrollbarThumb.style.left = `${boundary}px`
+      imageList.scrollLeft = scrollPosition;
+    }
 
+    const mouseLeave = () => {
+      document.removeEventListener("mousemove", mousemovement)
+      document.removeEventListener("mouseup", mouseLeave)
+    }
 
-// scrollLeft gives number of px of element content that is scrolled horizontally
-// gets or sets the number of pixels that an element's content is scrolled from its left edge.
-const dragStart = (e) => {
-  
-  // Update global variables on mouse down event 
-  isDrag = true;
-  prevPageX = e.pageX || e.touched[0].pageX;
-  prevScrollLeft = slide_contents.scrollLeft;
-}
+    // Event for drag interaction
+    document.addEventListener("mousemove", mousemovement)
+    document.addEventListener("mouseup", mouseLeave)
 
-// Scrolling images to the left according to mouse pointer
-const dragging = (e) => {
-  if(!isDrag) return;
-  else if(e.pageX >= slide_contents.scrollWidth)
-  e.preventDefault();
-  slide_contents.classList.add("dragging")
-  positionDiff = (e.pageX || e.touched[0].pageX) - prevPageX;
-  slide_contents.scrollLeft = prevScrollLeft - positionDiff;
-}
-
-const stopDrag = () => {
-  slide_contents.classList.remove("dragging");
-  isDrag = false;
-}
-
-arrowIcons.forEach(icon => {
-  icon.addEventListener("click", () =>{
-
-    // If clicked icon is left, reduce width value from the images_scrollleft else add to it
-    slide_contents.scrollLeft += icon.id == "left" ? -slideImg1_Width : slideImg1_Width;
-    showNavIcons();
   })
-});
 
-arrowIcons.forEach(icon => {
-  icon.addEventListener("click", () =>{
+  // Slide images according to button clicks
+  sliderBtns.forEach((button) => {
+    button.addEventListener("click", () => {
+      updateScroll();
+      const direction = button.id === "product-prevSlide" ? -1 : 1;
+      const scrollAmount = imageList.clientWidth * direction;
+      imageList.scrollBy({ left: scrollAmount, behaviour: "smooth" });
+      
+    });
+  });
 
-    // If clicked icon is left, reduce width value from the images_scrollleft else add to it
-    slide_contents.scrollLeft += icon.id == "left" ? -slideImg1_Width : slideImg1_Width;
+  // Update scrollbar thumb position based on image scrolling
+  const updateScroll = () => {
+    const scrollPos = imageList.scrollLeft;
+    const thumbPos = (scrollPos / maxScrollWidth) * (sliderScrollbar.clientWidth - sliderScrollbarThumb.offsetWidth)
+    sliderScrollbarThumb.style.left = `${thumbPos}px`;
+  }
+
+  const showBtns = () => {
+    console.log(Math.round(imageList.scrollLeft))
+    console.log(Math.round(maxScrollWidth));
+    sliderBtns[0].style.display = imageList.scrollLeft <= 0 ? "none" :  "block";
+    sliderBtns[1].style.display = Math.round(imageList.scrollLeft) >= maxScrollWidth - 1 ? "none" :  "block";
+  }
+
+  imageList.addEventListener("scroll", () => {
+    showBtns();
+    updateScroll();
   })
-});
+};
 
 
-slide_contents.addEventListener("mousedown", dragStart);
-slide_contents.addEventListener("touchstart", dragStart);
+// News Gallery Slider Script
+const ngContainer = document.querySelector(".news-gallery-container");
+const ngControlsContainer = document.querySelector(".news-gallery-controls");
+const ngControls = ['prev', 'next'];
+const ngItems = document.querySelectorAll('.news-gallery-item');
 
-slide_contents.addEventListener("mousemove", dragging);
-slide_contents.addEventListener("touchmove", dragging);
+class Carousel{
+  constructor(container, items, controls){
+    this.carouselContainer = container;
+    this.carouselControls = controls;
+    this.carouselArray = [...items];
+  }
 
-slide_contents.addEventListener("mouseup", stopDrag);
-slide_contents.addEventListener("mouseleave", stopDrag);
-slide_contents.addEventListener("touchend", stopDrag);
+  updateNewsGallery(){
+    this.carouselArray.forEach(element => {
+      element.classList.remove('news-gallery-item1');
+      element.classList.remove('news-gallery-item2');
+      element.classList.remove('news-gallery-item3');
+      element.classList.remove('news-gallery-item4');
+      element.classList.remove('news-gallery-item5');
+    })
+
+    this.carouselArray.slice(0, 5).forEach((element, i) =>{
+      element.classList.add(`news-gallery-item${i+1}`);
+    })
+  }
+
+  setCurrentState(direction){
+    if(direction.className == 'news-gallery-controls-prev'){
+      this.carouselArray.unshift(this.carouselArray.pop());
+    }
+    else{
+      this.carouselArray.push(this.carouselArray.shift());
+    }
+    
+    this.updateNewsGallery();
+   
+  }
+
+  setControls(){
+    this.carouselControls.forEach(control => {
+      ngControlsContainer.appendChild(document.createElement('button')).className = `news-gallery-controls-${control}`;
+      document.querySelector(`.news-gallery-controls-${control}`).innerText = control;
+    })
+  }
+
+  useControls(){
+    const triggers = [...ngControlsContainer.childNodes];
+    triggers.forEach(control => {
+      control.addEventListener('click', e => {
+        e.preventDefault();
+        this.setCurrentState(control);
+      });
+    })
+  } 
+
+}
+
+const exampleCarousel = new Carousel(ngContainer, ngItems, ngControls);
+
+
+exampleCarousel.setControls();
+exampleCarousel.useControls();
+
+setInterval(function(){
+  exampleCarousel.carouselArray.push(exampleCarousel.carouselArray.shift());
+  exampleCarousel.updateNewsGallery();
+}, 10000)
+
+
+window.addEventListener("load", initSlider);
+window.addEventListener("resize", initSlider);

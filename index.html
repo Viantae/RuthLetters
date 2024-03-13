@@ -5,8 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Ruth's Letters | Bakery </title>
     <link rel="stylesheet" href="style.css">
-    <script>document.body.className='js';</script>
-    <script src = "script.js" defer></script>
+
+     <!--Google Fonts Links for Icons-->
+     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />     
   </head>
 
   <body>
@@ -17,55 +18,172 @@
         </div>
         <nav class="nav-options">
           <ul>
-            <li><a href="">Home</a></li>
-            <li><a href="">Treats</a></li>
-            <li><a href="">About</a></li>
-            <li><a href="">Contact</a></li>
+            <li><a href=""><span class = "nav-icon material-symbols-outlined">Home</span>Home</a></li>
+            <li><a href=""><span class = "nav-icon material-symbols-outlined">Bakery_Dining</span>Treats</a></li>
+            <li><a href=""><span class = "nav-icon material-symbols-outlined">Feed</span>About</a></li>
+            <li><a href=""><span class = "nav-icon material-symbols-outlined">Call</span>Contact</a></li>
           </ul>
         </nav>
       </div>
-    </section>
+    </section><!--end of nav-container-->
     <section class = "landing-section">
       <div class = "landing-text">
         <h1>What is Quality?<br>Our Homemade Cookies & Treats!<br></h1>
         <p>
           Contains the best flavour of all foods <em><b>emotions</b></em>.<br>
-          Each Baked with love & care for your taste an d enjoyment.<br>
+          Each baked with love & care for your taste and enjoyment.<br>
           Life-changing cookies and treats for you, no-cap fam, legit fr fr, lit bakery<br>
         </p>
-        <a href="" class = "shopBtn">Check it Out! <span style="font-size: 20px;">&#8594</span></a>
+        <a href="" class = "shopBtn">Check it Out! <span style="font-size: 20px;"></span></a>
       </div>
       <div class = "landing-image">
         <!--image from https://pngimg.com/image/13677-->
-        <img src="images/PikPng.com_crackers-images-png_732764.png" alt="">
+        <!--<img src="images/PikPng.com_crackers-images-png_732764.png" alt="">-->
       </div>
     </section>
+    <!--start of products-section-->
     <section class = "products-section">
+
+      <!--Slideshow-->
+      <!--start of product-slider-container-->
+      <section class = "product-slider-container">
       <div class = "products-title">
-        <h1>Treats:</h1>
-      </div> <!--products-title-->
-      <section class = "slide-container">
-        <a id = "left" class="prev" >&#10094;</a>
-        <!--Slideshow-->
-        <div class = "slide-contents" id = "slides">
-          <img src="images/shakti-rajpurohit-qczubsyHofQ-unsplash.jpg" draggable="false" alt="">
-          <img src="images/saymom-leao-UY5kkN44XQA-unsplash.jpg" draggable="false" alt="">
-          <img src="images/kenrick-mills-CgPPfCOPIWM-unsplash.jpg" draggable="false" alt="">
-          <img src="images/tamas-pap-98Kk8vwPbgs-unsplash.jpg" draggable="false" alt="">
-          <img src="images/pngaaa.com-106342.png" draggable="false" alt="">
-          <img src="images/pngaaa.com-106342.png" draggable="false" alt="">
-          <img src="images/pngaaa.com-106342.png" draggable="false" alt="">
-          <img src="images/pngaaa.com-106342.png" draggable="false" alt="">
-        </div> <!--slide-contents-->
-        <a id = "right" class="next" >&#10095;</a>
-      </section> <!--slide-container-->
-    </section> <!--products-section-->
-    <section class= "recommendation">
-      <h1>Customer Reviews</h1>
-      <img src="images/thumbsup.png" alt="">
+        <h2><u>Our Delicious Treats:</u></h2>
+      </div> 
+
+        <!--start of product-slider-wrapper-->
+        <div class = product-slider-wrapper>
+          <button id = "product-prevSlide" class = "product-slide-button material-symbols-outlined" style= "padding-left: 5px;">arrow_back_ios</button>
+          
+          <!--start of product-image-list-->
+          <div class = "product-image-list" id = "slides">
+            <img src="images/shakti-rajpurohit-qczubsyHofQ-unsplash.jpg" draggable="false" class = "product-image-item" alt="treats img 1">
+            <img src="images/saymom-leao-UY5kkN44XQA-unsplash.jpg" draggable="false" class = "product-image-item" alt="treats img 2">
+            <img src="images/kenrick-mills-CgPPfCOPIWM-unsplash.jpg" draggable="false" class = "product-image-item" alt="treats img 3">
+            <img src="images/tamas-pap-98Kk8vwPbgs-unsplash.jpg" draggable="false" class = "product-image-item" alt="treats img 4">
+            <img src="images/pngaaa.com-106342.png" draggable="false" class = "product-image-item" alt="treats img 5">
+            <img src="images/pngaaa.com-106342.png" draggable="false" class = "product-image-item" alt="treats img 6">
+            <img src="images/pngaaa.com-106342.png" draggable="false" class = "product-image-item" alt="treats img 7">
+            <img src="images/pngaaa.com-106342.png" draggable="false" class = "product-image-item" alt="treats img 8">
+          </div> 
+          <!--end of product-image-list-->
+
+          <button id = "product-nextSlide" class = "product-slide-button material-symbols-outlined" style= "padding-left: 5px;">arrow_forward_ios</button>
+        </div>  
+        <!--end of product-slider-wrapper-->
+
+        <div class="product-slider-scrollbar">
+          <div class="product-scrollbar-track">
+            <div class="product-scrollbar-thumb">
+            </div>
+          </div>
+        </div>
+      </section> 
+      <!--end of product-slider-container-->
+      
+    </section> 
+    <!--end of products-section-->
+
+    <div class = "product-redirect">
+      <div class = "product-redirect-text">
+        <b><a href="">Find out More ></a></b>
+      </div>
+    </div>
+
+    <!--start of instructions-section-->
+    <section class = "instructions-section">
+      <div class = "instructions-title">
+        <h1> How to Order?:</h1>
+      </div> 
+
+      <!--start of instructions-->
+      <section class = instructions>
+        <div class = "instruction-steps">
+          <img src="icons/icons8-instagram-250.png" id = "insta" style="width: 75.6%;" alt="instagram icon">
+          <h2>Step 1: Visit our Instagram</h2>
+          Explanation here with some lorem ipsum <br>
+          Explanation here with some lorem ipsum <br>
+        </div>
+        <div class = "instruction-steps">
+          <img src="icons/icons8-messages-250.png" alt="message icon">
+          <h2>Step 2: Send a Message</h2>
+          Explanation here with some lorem ipsum <br>
+          Explanation here with some lorem ipsum <br>
+        </div>
+        <div class = "instruction-steps">
+          <img src="icons/icons8-phone-250.png" alt="payment icon">
+          <h2>Step 3: Online Payment</h2>
+          Explanation here with some lorem ipsum <br>
+          Explanation here with some lorem ipsum <br>
+        </div>
+        <div class = "instruction-steps">
+          <img src="icons/icons8-package-250.png" id = "package" style="width: 79.5%;" alt="package icon">
+          <h2>Step 4: Get Your Cookies!</h2>
+          Explanation here with some lorem ipsum <br>
+          Explanation here with some lorem ipsum <br>
+        </div>
+      </section>
+      <!--end of instructions-->
+      
     </section>
+    <!--end of instructions-section-->
+
+    <!--start of news-section-->
+    <section class = "news-section">
+      <div class = "news-title">
+        <h1>COOOL NEWS:</h1>
+      </div>
+      <div class = "news-gallery">
+        <div class = "news-gallery-container">
+          <img class = "news-gallery-item news-gallery-item1" src="images/pngaaa.com-106342.png" data-index = "1">
+          <img class = "news-gallery-item news-gallery-item2" src="images/pngaaa.com-106342.png" data-index = "2">
+          <img class = "news-gallery-item news-gallery-item3" src="images/ruthletterlogo-compressed.png" data-index = "3">
+          <img class = "news-gallery-item news-gallery-item4" src="images/pngaaa.com-106342.png" data-index = "4">
+          <img class = "news-gallery-item news-gallery-item5" src="images/pngaaa.com-106342.png" data-index = "5">
+          <img class = "news-gallery-item news-gallery-item6" src="images/pngaaa.com-106342.png" data-index = "6">
+        </div>
+        <div class="news-gallery-controls"> </div>
+      </div>
+      
+    </section>
+    <!--end of news-section-->
+
     <footer>
-      This is the footer where I will add some cool things but I dont know what yet <br>
+      <div class = "footer-container">
+        <div class = "footer-notes">
+          <ul><b>Credits:</b>
+            <li> Icons from Icon8 & Google Fonts</li>
+            <li> Photos from Unsplash</li>
+            <li> Background from Freepik</li>
+            <li> The business of Ruth's Letters for existing </li>
+            <li> Myself </li>
+        </ul> 
+        </div>
+        <div class = "footer-notes">
+          <ul><b>Credits:</b>
+            <li> Icons from Icon8 & Google Fonts</li>
+            <li> Photos from Unsplash</li>
+            <li> Background from Freepik</li>
+            <li> The business of Ruth's Letters for existing </li>
+            <li> Myself </li>
+        </ul> 
+        </div>
+        <div class = "footer-notes">
+          <ul><b>Credits:</b>
+            <li> Icons from Icon8 & Google Fonts</li>
+            <li> Photos from Unsplash</li>
+            <li> Background from Freepik</li>
+            <li> The business of Ruth's Letters for existing </li>
+            <li> Myself </li>
+        </ul> 
+        </div>
+      </div>
+      
+      <div class="copyright">
+        <b>2024 © Ruths Letters. All Rights Reserved.</b> <br>
+        <span style="font-size: 10px; display: flex; justify-content: center;">There is no actual copyright, I dont even own this business</span>
+      </div>
     </footer>
+    <script src = "script.js"></script>
   </body>
 </html>
