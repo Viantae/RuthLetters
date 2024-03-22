@@ -1,3 +1,19 @@
+
+
+const hamburgerIcon = document.getElementById("nav-icon-container");
+const navItems = document.getElementById("navItems");
+
+if(hamburgerIcon){
+  hamburgerIcon.addEventListener('click', () => {
+    hamburgerIcon.classList.toggle("change");
+    hamburgerIcon.classList.toggle('active');
+    navItems.classList.add('active');
+    if(!hamburgerIcon.classList.contains("active")){
+      navItems.classList.remove('active');
+    }
+  })
+}
+
 // Product Slider Script
 const initSlider = () => {
   const imageList = document.querySelector(".product-slider-wrapper .product-image-list");
@@ -32,7 +48,6 @@ const initSlider = () => {
     // Event for drag interaction
     document.addEventListener("mousemove", mousemovement)
     document.addEventListener("mouseup", mouseLeave)
-
   })
 
   // Slide images according to button clicks
@@ -54,8 +69,6 @@ const initSlider = () => {
   }
 
   const showBtns = () => {
-    console.log(Math.round(imageList.scrollLeft))
-    console.log(Math.round(maxScrollWidth));
     sliderBtns[0].style.display = imageList.scrollLeft <= 0 ? "none" :  "block";
     sliderBtns[1].style.display = Math.round(imageList.scrollLeft) >= maxScrollWidth - 1 ? "none" :  "block";
   }
@@ -65,7 +78,6 @@ const initSlider = () => {
     updateScroll();
   })
 };
-
 
 // News Gallery Slider Script
 const ngContainer = document.querySelector(".news-gallery-container");

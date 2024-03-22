@@ -4,8 +4,21 @@
   --clr-peach : #FCDAD1;
   --clr-orangetan: #fab8a1; 
   --clr-pastelMint: #F1E9DA;
-  --clr-moderngray: #4d4633;
+  --clr-moderngray: #3F3F3F;
 }
+
+
+/* 
+
+Debug CSS code (very helpful and cool)
+*{
+  background: #000 !important;
+  color: #0f0 !important;
+  outline: solid #f00 1px !important;
+}
+
+
+*/
 
 *{
   margin: 0;
@@ -57,9 +70,7 @@ body{
 .nav-options ul{
   border-left: solid #fab8a1;
   padding-left: 30px;
-  text-overflow: ellipsis;
   display: inline-block;
-  list-style-type: none;
 }
 
 .nav-options ul li{
@@ -70,22 +81,19 @@ body{
 .nav-options ul li a{
   cursor: pointer;
   display: flex;
-  box-sizing: border-box;
-  justify-content: center;
   position: relative;
-  text-align: center;
   align-items: center;
   text-decoration: none;
   color: #111;
-  background-color: rgb(254, 230, 227);
+  background-color: #fee6e3;
   z-index: 1;
-  border: 2px solid #111;
+  border-bottom: 4px solid #111;
+  border-right: 4px solid #111;
   border-radius: 8px;  
-  font-size: 20px;
+  font-size: 20px;  
   height: 48px;
-  line-height: 24px;
-  max-width: 100%;
-  padding: 0 30px 0 20px;
+  width: 130px;
+  padding: 0 0 0 20px;
   
   &:hover::after{
     z-index: 1;
@@ -94,6 +102,7 @@ body{
   }
 
   &::after{
+  position: absolute;
   background-color: rgba(245, 191, 13, 0.299);
   border-radius: 8px;
   content: "";
@@ -102,14 +111,17 @@ body{
   width: 45%;
   top: -2px;
   left: 0;
-  position: absolute;
   transform: translate(124%, 0);
-  transition: .2s ease-out;
   z-index: -1;
   }
 
   &:hover{
+    font-weight: 900;
     transform: scale(1.05);
+    .nav-icon{
+      font-variation-settings:
+      'FILL' 1
+    }
   }
 }
 
@@ -119,10 +131,39 @@ body{
   background-color: var(--clr-maroon);
 }
 
+.nav-icon-container {
+  display: none;
+  cursor: pointer;
+}
+
+#bar1, #bar2, #bar3 {
+  width: 30px;
+  height: 3px;
+  background-color: var(--clr-pastelMint);
+  margin: 6px 0;
+  transition: 0.4s;
+}
+.change #bar1 {
+  transform: translate(0, 11px) rotate(-45deg);
+}
+.change #bar2 {opacity: 0;}
+
+.change #bar3 {
+  transform: translate(0, -7px) rotate(45deg);
+}
+
+/* index.html style start */
+.main{
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
 .landing-section{
   background-image: url("images/top-view-cookies-chocolate-chips-copy-space-edited.jpg");
-  background-size: auto 180vh;
-  height: 400px;
+  background-size: auto 200vh;
+  height: 450px;
   padding-bottom: 30px;
   /*
   background-color: rgba(0,0,0,0.1);
@@ -159,7 +200,7 @@ body{
 }
 */
 
-.shopBtn{
+#shopBtn{
   position: relative;
   display: inline-block;
   text-align: center;
@@ -213,7 +254,7 @@ body{
 .product-slider-container{
   max-width: 1400px;
   width: 95%;
-  min-height: 400px;
+  min-height: 200px;
   margin-bottom: 50px;
 }
 
@@ -288,6 +329,8 @@ body{
 
 /* Images inside image slider*/
 .product-slider-wrapper .product-image-list .product-image-item{
+  min-height: 100px;
+  min-width: 50px;
   width: 350px;
   height: 450px;
   object-fit: cover;
@@ -341,7 +384,8 @@ body{
 }
 
 .product-redirect-text{
-  font-size: 40px;
+  font-size: 2vmax;
+  max-block-size: 400px;
   background-color: rgba(0, 0, 0, 0.35);
   text-align: end;
   padding: 20px 100px 20px 0;
@@ -393,6 +437,7 @@ body{
   flex-direction: row;
   align-items: center;
   width: 100%;
+  overflow-x: hidden;
 }
 
 .news-title{
@@ -533,17 +578,19 @@ body{
   right: -40px;
 }
 
-footer{
+/* index.html style end
+ */
 
+footer{
   display: flex;
-  width:100%;
   flex-wrap: wrap;
   flex-direction: row;
-  color: white;
-  align-items: center;
+  overflow: hidden;
   justify-content: center;
   -webkit-text-stroke-color: black;
   -webkit-text-stroke-width: 0.2px;
+  width:100%;
+  color: white;
   background: linear-gradient(180deg, rgba(188,97,98,1) 0%, rgba(161,60,71,1) 41%, rgba(112,41,41,1) 91%);
 }
 
@@ -551,32 +598,46 @@ footer{
   margin: 20px 5% 10px;
 }
 
+.footer-notes li{
+  margin-bottom: 4px;
+}
+
 .footer-container{
   display: flex;
-  align-items: center;
   justify-content: center;
   width: 100%;
-  margin-bottom: 20px;
+  margin-bottom: 2px;
 }
 
 .copyright{
+  text-align: center;
   display: block;
   margin: 10px 0;
 }
 
+
+
 /* Adjust based on screen size */
 @media screen and (max-width: 1023px){
+  .nav-options ul{
+    border: none;
+  }
+
+  .navlogo{
+    width: 100px;
+  }
+
   .landing-text{
     margin-left: 10px;
   }
 
 
   .landing-text h1{
-    line-height: 30px;
-    font-size: 20px;
+    line-height: 40px;
+    font-size: 30px;
   }
 
-  .shopBtn{
+  #shopBtn{
     font-size: 15px;
     padding: 10px 10px;
     width: 140px;
@@ -602,8 +663,8 @@ footer{
   }
 
   .product-slider-wrapper .product-image-list .product-image-item{
-    width: 280px;
-    height: 380px;
+    width: 180px;
+    height: 280px;
   }
 
   .product-slider-scrollbar .product-scrollbar-thumb{
@@ -620,8 +681,103 @@ footer{
   }
 }
 
-@media screen and (max-width: 390px){
+@media screen and (max-width: 900px){
+  .nav-options ul{
+    overflow-x: hidden;
+    margin: 0;
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    top: -1px;
+    right: -200px;
+    height: 103vh;
+    width: 150px;
+    background-color: var(--clr-maroon);
+    box-shadow: 0 40px 60px rgba(0, 0, 0, 0.1);
+    padding: 50px 0 10px 4px;
+    z-index: 3;
+    transition: 0.3s;
+
+    &.active{
+      right: -1px;
+    }
+  }
+
+  .nav-bar li{
+    padding-left: 20px;
+    padding-bottom: 4px;
+    border-bottom: dotted black 1px;
+    margin-bottom: 25px;
+    
+  } 
   
+  .nav-options ul li a{
+    width: 100px;
+    height: 50px;
+    font-size: 20px;
+    padding: 0 10px;
+    &::after{
+      height: 50px;
+    }
+
+  }
+
+  #contact{
+    padding-left: 5px;
+  }
+
+  .nav-icon-container{
+    background-color: var(--clr-maroon);
+    z-index: 4;
+    display: inline-block;
+
+    /*This is very bad practice*/
+    &.active{
+      background-color: #7a2a33;
+      padding: 5px 0px 0 90px ;
+      top: -1px;
+      width: 149px;
+      height: 47px;
+      right: 0px;
+      position: fixed;
+    }
+  }
+
+  .instructions-title{
+    font-size: 25px;
+  }
+
+  .products-title{
+    font-size: larger;
+  }
+  
+}
+
+@media screen and (max-width: 390px){
+  .landing-section{
+    height: 200px;
+    mask-image: linear-gradient(to bottom, black calc(100% - 24px), transparent 100%);
+    font-size: 10px;
+  }
+
+  .landing-text h1{
+    line-height: 20px;
+    font-size: 15px;
+  }
+
+  #shopBtn{
+    padding: 4px 4px;
+    margin-top: 10px;
+    &:before {
+      top: 9px;
+    }
+  }
+
+  .instructions-title{
+    font-size: 20px;
+  }
 }
 
 @media (min-width: 768px) {
