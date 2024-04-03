@@ -1,4 +1,6 @@
-
+// Ensure everything loads
+document.getElementById("hideAll").style.display = "block";
+window.onload = function() {document.getElementById("hideAll").style.display = "none"; }
 
 const hamburgerIcon = document.getElementById("nav-icon-container");
 const navItems = document.getElementById("navItems");

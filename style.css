@@ -26,6 +26,16 @@ Debug CSS code (very helpful and cool)
   box-sizing: border-box;
 }
 
+#hideAll{
+   position: fixed;
+   left: 0px; 
+   right: 0px; 
+   top: 0px; 
+   bottom: 0px; 
+   background-color:#FCDAD1;
+   z-index: 99; /* Higher than anything else in the document */
+}
+
 body::-webkit-scrollbar{
   display: none;
 }
@@ -384,15 +394,20 @@ body{
 }
 
 .product-redirect-text{
-  font-size: 2vmax;
+  font-size: 3vmax;
   max-block-size: 400px;
   background-color: rgba(0, 0, 0, 0.35);
   text-align: end;
   padding: 20px 100px 20px 0;
 }
 
-.product-redirect-text a{
+#productLink{
   color: white;
+
+  &:hover{
+    transition: 0.3s;
+    color:#fab8a1;
+  }
 }
 
 .instructions-section{
@@ -602,6 +617,13 @@ footer{
   margin-bottom: 4px;
 }
 
+.footer-title{
+  position: relative;
+  font-size: 25px;
+  font-weight: bolder;
+  text-decoration: underline white
+}
+
 .footer-container{
   display: flex;
   justify-content: center;
@@ -672,16 +694,23 @@ footer{
   }
 
   .news-gallery-controls button{
+    right: -2px;
+    margin: 0 32%;
     font-size: 0;
   }
 
   .news-gallery-item{
-    height: 320px;
-    width: 250px;  
+    height: 380px;
+    width: 280px;  
   }
 }
 
 @media screen and (max-width: 900px){
+  .landing-text p{
+    font-size: 10px;
+    line-height: 15px;
+  }
+
   .nav-options ul{
     overflow-x: hidden;
     margin: 0;
@@ -690,8 +719,7 @@ footer{
     flex-direction: column;
     align-items: flex-start;
     justify-content: flex-start;
-    top: -1px;
-    right: -200px;
+    right: -250px;
     height: 103vh;
     width: 150px;
     background-color: var(--clr-maroon);
@@ -701,7 +729,7 @@ footer{
     transition: 0.3s;
 
     &.active{
-      right: -1px;
+      right: -2px;
     }
   }
 
@@ -753,6 +781,9 @@ footer{
     font-size: larger;
   }
   
+  .footer-container{
+    flex-direction: column;
+  }
 }
 
 @media screen and (max-width: 390px){
@@ -763,6 +794,7 @@ footer{
   }
 
   .landing-text h1{
+    text-wrap: wrap;
     line-height: 20px;
     font-size: 15px;
   }
