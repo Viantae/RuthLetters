@@ -1,12 +1,32 @@
 /* CSS */
+
+@font-face {
+  font-family: 'Happy School';
+  src: url(font/Happy_School.ttf);
+}
+
+@font-face {
+    font-family: 'Banana Stick';
+    src: url("font/Banana_Stick.otf") format("opentype");
+}
+
+@font-face {
+  font-family: 'AppleGaramond';
+  src: url(font/AppleGaramond.ttf);
+}
+
+@font-face{
+  font-family: 'Butler Medium';
+  src: url("font/Butler_Medium.otf") format("opentype");
+}
+
 :root{
-  --clr-maroon: #a13c47;
+  --clr-lightpeach: #ffeee3;
   --clr-peach : #FCDAD1;
   --clr-orangetan: #fab8a1; 
   --clr-pastelMint: #F1E9DA;
   --clr-moderngray: #3F3F3F;
 }
-
 
 /* 
 
@@ -16,7 +36,6 @@ Debug CSS code (very helpful and cool)
   color: #0f0 !important;
   outline: solid #f00 1px !important;
 }
-
 
 */
 
@@ -47,6 +66,16 @@ body, html{
 body{
   height: 100% !important;
   background-color: var(--clr-peach);
+  color: #3c2415;
+  font-family: 'Butler Medium';
+}
+
+.heading{
+  display: flex;
+  margin-top: 2rem;
+  justify-content: center;
+  font-family: 'Banana Stick';
+  font-size: 2rem;
 }
 
 .navlogo{
@@ -57,7 +86,8 @@ body{
 .nav-icon{
   position: relative;
   top: -2px;
-  margin-right: 1px;
+  margin-left: 3px;
+  margin-right: 5px;
   font-variation-settings:
   'FILL' 0,
   'wght' 100,
@@ -68,24 +98,19 @@ body{
 .nav-bar{
   display: flex;
   align-items: center;
-  padding: 0 30px
+  padding: 0 30px;
 }
 
 .nav-options{
   flex: 1;  
   text-align: right;
+
 }
 
-
-.nav-options ul{
-  border-left: solid #fab8a1;
-  padding-left: 30px;
-  display: inline-block;
-}
 
 .nav-options ul li{
   display: inline-block;
-  margin-right: 40px;
+  margin-right: 30px;
 }
 
 .nav-options ul li a{
@@ -95,7 +120,7 @@ body{
   align-items: center;
   text-decoration: none;
   color: #111;
-  background-color: #fee6e3;
+  background-color: #c1936f;
   z-index: 1;
   border-bottom: 4px solid #111;
   border-right: 4px solid #111;
@@ -113,12 +138,10 @@ body{
 
   &::after{
   position: absolute;
-  background-color: rgba(245, 191, 13, 0.299);
   border-radius: 8px;
   content: "";
   display: block;
   height: 48px;
-  width: 45%;
   top: -2px;
   left: 0;
   transform: translate(124%, 0);
@@ -136,9 +159,12 @@ body{
 }
 
 .nav-container{
+  position: sticky;
+  z-index: 10;
+  top: 0;
   width: 100%;
   height: 10%;
-  background-color: var(--clr-maroon);
+  background-color: var(--clr-lightpeach);
 }
 
 .nav-icon-container {
@@ -149,8 +175,8 @@ body{
 #bar1, #bar2, #bar3 {
   width: 30px;
   height: 3px;
-  background-color: var(--clr-pastelMint);
-  margin: 6px 0;
+  background-color: var(--clr-moderngray);
+  margin: 6px ;
   transition: 0.4s;
 }
 .change #bar1 {
@@ -171,8 +197,8 @@ body{
 }
 
 .landing-section{
-  background-image: url("images/top-view-cookies-chocolate-chips-copy-space-edited.jpg");
-  background-size: auto 200vh;
+  background-image: url("images/stackedcookies.svg");
+  background-size: auto 55vh;
   height: 450px;
   padding-bottom: 30px;
   /*
@@ -190,17 +216,27 @@ body{
 
 .landing-text{
   margin-left: 100px;
+  
 }
 
 .landing-section p{
-  font-size: large
+  font-size: large;
+  background-color: rgba(243, 238, 218, 0.9);
+  padding: 20px;
+  border-bottom-left-radius: 50px;
+  border-bottom-right-radius: 50px;
+  
 }
 
 .landing-text h1{
   font-size: 50px;
   line-height: 60px;
-  margin: 10px 0;
+  padding-left: 15px;
+  background-color: rgba(243, 238, 218, 0.9);
+  border-top-left-radius: 50px;
+  border-top-right-radius: 50px;
 }
+
 
 /*
 .landing-image img{
@@ -255,6 +291,7 @@ body{
 
 .products-title, 
 .news-title{
+  font-family: 'Banana Stick';
   margin-top: 50px;
   font-size: 35px;  
   padding: 10px;
@@ -438,16 +475,16 @@ body{
   text-align: center;
   align-items: center;
   display: grid;
-  margin: 0px 50px;
+  margin: 0px 30px;
 }
 
 .instruction-steps img{
   justify-self: center;
-  width: 80%;
+  width: 50%;
 }
 
 .news-section{
-  background-color: var(--clr-peach);
+  background-color: #fee6e3;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -602,11 +639,9 @@ footer{
   flex-direction: row;
   overflow: hidden;
   justify-content: center;
-  -webkit-text-stroke-color: black;
-  -webkit-text-stroke-width: 0.2px;
   width:100%;
   color: white;
-  background: linear-gradient(180deg, rgba(188,97,98,1) 0%, rgba(161,60,71,1) 41%, rgba(112,41,41,1) 91%);
+  background: linear-gradient(180deg, rgb(173, 127, 128) 0%, rgba(161,60,71,1) 41%, rgba(112,41,41,1) 91%);
 }
 
 .footer-notes{
@@ -620,7 +655,7 @@ footer{
 .footer-title{
   position: relative;
   font-size: 25px;
-  font-weight: bolder;
+  font-weight: bold;
   text-decoration: underline white
 }
 
@@ -632,6 +667,7 @@ footer{
 }
 
 .copyright{
+  font-size: smaller;
   text-align: center;
   display: block;
   margin: 10px 0;
@@ -713,6 +749,7 @@ footer{
 
   .nav-options ul{
     overflow-x: hidden;
+    top: 69px;
     margin: 0;
     position: fixed;
     display: flex;
@@ -721,10 +758,10 @@ footer{
     justify-content: flex-start;
     right: -250px;
     height: 103vh;
-    width: 150px;
-    background-color: var(--clr-maroon);
+    width: 14rem;
+    background-color: var(--clr-lightpeach);
     box-shadow: 0 40px 60px rgba(0, 0, 0, 0.1);
-    padding: 50px 0 10px 4px;
+    padding: 50px 0 80px 4px;
     z-index: 3;
     transition: 0.3s;
 
@@ -734,22 +771,19 @@ footer{
   }
 
   .nav-bar li{
-    padding-left: 20px;
+    padding-left: 40px;
     padding-bottom: 4px;
-    border-bottom: dotted black 1px;
-    margin-bottom: 25px;
-    
+    margin-bottom: 20px;
   } 
   
   .nav-options ul li a{
-    width: 100px;
+    width: 7rem;
     height: 50px;
     font-size: 20px;
-    padding: 0 10px;
+    padding: 0 1px;
     &::after{
       height: 50px;
     }
-
   }
 
   #contact{
@@ -757,18 +791,18 @@ footer{
   }
 
   .nav-icon-container{
-    background-color: var(--clr-maroon);
+    background-color: var(--clr-lightpeach);
     z-index: 4;
     display: inline-block;
 
     /*This is very bad practice*/
     &.active{
-      background-color: #7a2a33;
+      background-color: var(--clr-lightpeach);
       padding: 5px 0px 0 90px ;
-      top: -1px;
+      top: 10px;
       width: 149px;
       height: 47px;
-      right: 0px;
+      right: 0.9rem;
       position: fixed;
     }
   }
