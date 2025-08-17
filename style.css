@@ -1,13 +1,4 @@
 /* CSS */
-
-@font-face {
-  font-family: 'Happy School';
-  src: url(font/Happy_School.ttf);
-}
-
-@font-face {
-    font-family: 'Banana Stick';
-    src: url("font/Banana_Stick.otf") format("opentype");
 }
 
 @font-face {
@@ -18,6 +9,11 @@
 @font-face{
   font-family: 'Butler Medium';
   src: url("font/Butler_Medium.otf") format("opentype");
+}
+
+@font-face{
+  font-family: 'Coolvetica';
+  src: url("font/Coolvetica_Rg.otf") format("opentype");
 }
 
 :root{
@@ -74,8 +70,9 @@ body{
   display: flex;
   margin-top: 2rem;
   justify-content: center;
-  font-family: 'Banana Stick';
-  font-size: 2rem;
+  font-family: 'Coolvetica';
+  letter-spacing: 1.5px;
+  font-size: 1.4rem;
 }
 
 .navlogo{
@@ -291,7 +288,8 @@ body{
 
 .products-title, 
 .news-title{
-  font-family: 'Banana Stick';
+  font-family: 'Coolvetica';
+  letter-spacing: 1.5px;
   margin-top: 50px;
   font-size: 35px;  
   padding: 10px;
@@ -493,8 +491,6 @@ body{
 }
 
 .news-title{
-  background-color: var(--clr-moderngray);
-  color: white;
   border-radius: 15px;
   position: absolute;
   align-self: first baseline;
@@ -645,7 +641,7 @@ footer{
 }
 
 .footer-notes{
-  margin: 20px 5% 10px;
+  margin: 20px 10% 10px ;
 }
 
 .footer-notes li{
@@ -822,7 +818,6 @@ footer{
 
 @media screen and (max-width: 390px){
   .landing-section{
-    height: 200px;
     mask-image: linear-gradient(to bottom, black calc(100% - 24px), transparent 100%);
     font-size: 10px;
   }
